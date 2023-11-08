@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temporizador de Cuenta Regresiva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        
+        #countdown {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Temporizador de Cuenta Regresiva</h1>
+    <div id="countdown">00:00:00</div>
+
+    <script>
+        // Establece la fecha y hora de finalización del temporizador (puedes cambiarla a la fecha y hora deseada)
+        const endDate = new Date("2023-12-31T23:59:59").getTime();
+
+        // Actualiza el temporizador cada segundo
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = endDate - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "¡Tiempo terminado!";
+            } else {
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                const formattedTime = `${addLeadingZero(hours)}:${addLeadingZero(minutes)}:${addLeadingZero(seconds)}`;
+                document.getElementById('countdown').innerHTML = formattedTime;
+            }
+        }
+
+        function addLeadingZero(value) {
+            return value < 10 ? "0" + value : value;
+        }
+    </script>
+</body>
+
+</html>

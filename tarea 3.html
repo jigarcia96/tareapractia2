@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cambio de Imagen al Pasar el Ratón</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Cambio de Imagen </h1>
+        <div class="image-container">
+            <img src="img1.jpg" alt="Imagen 1" onmouseover="changeImage()" onmouseout="restoreImage()">
+        </div>
+    </div>
+
+    <script>
+        let originalImage = "img1.jpg";
+        let newImage = "img2.jpg";
+
+        function changeImage() {
+            document.querySelector('.image-container img').src = newImage;
+        }
+
+        function restoreImage() {
+            document.querySelector('.image-container img').src = originalImage;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juego de Preguntas y Respuestas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            max-width: 400px;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #result {
+            margin-top: 20px;
+        }
+        
+        .message {
+            font-weight: bold;
+        }
+        
+        .correct {
+            color: green;
+        }
+        
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quiz-container">
+        <h1>Juego de Preguntas y Respuestas</h1>
+        <div class="question" id="question">
+            Pregunta 1: ¿Cuál es la capital de Francia?
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer(true)">París</button>
+            <button onclick="showMessage('incorrect')">Londres</button>
+        </div>
+        <div class="question" id="question">
+            Pregunta 2: ¿Cuál es el planeta más grande del sistema solar?
+        </div>
+        <div class="options">
+            <button onclick="showMessage('incorrect')">Tierra</button>
+            <button onclick="checkAnswer(true)">Júpiter</button>
+        </div>
+        <div class="question" id="question">
+            Pregunta 3: ¿Cuál es el animal terrestre más rápido?
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer(true)">Guepardo</button>
+            <button onclick="showMessage('incorrect')">Elefante</button>
+        </div>
+        <div id="result"></div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+        const questions = [{
+            question: "¿Cuál es la capital de Francia?",
+            correct: true
+        }, {
+            question: "¿Cuál es el planeta más grande del sistema solar?",
+            correct: true
+        }, {
+            question: "¿Cuál es el animal terrestre más rápido?",
+            correct: true
+        }];
+
+        function checkAnswer(isCorrect) {
+            if (isCorrect) {
+                score++;
+                showMessage('correct');
+            } else {
+                showMessage('incorrect');
+            }
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                showQuestion(currentQuestion);
+            } else {
+                showResult();
+            }
+        }
+
+        function showQuestion(index) {
+            const questionElement = document.querySelector('.question');
+            questionElement.textContent = `Pregunta ${index + 1}: ${questions[index].question}`;
+            questionElement.textContent = `Pregunta ${index + 2}: ${questions[index].question}`;
+            document.getElementById('message').textContent = '';
+        }
+
+        function showMessage(type) {
+            const messageElement = document.getElementById('message');
+            if (type === 'correct') {
+                messageElement.textContent = 'Respuesta correcta';
+                messageElement.classList.add('correct');
+                messageElement.classList.remove('incorrect');
+            } else if (type === 'incorrect') {
+                messageElement.textContent = 'Respuesta incorrecta';
+                messageElement.classList.add('incorrect');
+                messageElement.classList.remove('correct');
+            }
+        }
+
+        function showResult() {
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.style.display = 'none';
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `Puntuación final: ${score} de ${questions.length}`;
+        }
+
+        showQuestion(currentQuestion);
+    </script>
+</body>
+
+</html>

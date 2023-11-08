@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Estilo para centrar el contenido */
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Estilo inicial del elemento HTML */
+        
+        #elemento {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Contenedor principal que centra el contenido -->
+    <div>
+        <!-- Botón que activará el cambio de color -->
+        <button id="cambiarColorButton" style="text-align: center;">Cambiar Color de Fondo</button>
+
+        <!-- Elemento HTML cuyo color de fondo cambiará -->
+        <div id="elemento">Elemento a cambiar de color</div>
+    </div>
+
+    <script>
+        // Función para cambiar el color de fondo del elemento
+        function cambiarColorDeFondo() {
+            // Genera un color aleatorio en formato hexadecimal
+            var colorAleatorio = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+            // Cambia el color de fondo del elemento con el ID "elemento"
+            document.getElementById("elemento").style.backgroundColor = colorAleatorio;
+        }
+
+        // Asigna la función al evento click del botón
+        document.getElementById("cambiarColorButton").addEventListener("click", cambiarColorDeFondo);
+    </script>
+
+</body>
+
+</html>

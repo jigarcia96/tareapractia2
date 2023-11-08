@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Menú de Navegación Desplegable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            display: inline-block;
+            position: relative;
+            margin-right: 20px;
+        }
+        
+        li ul {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        li:hover ul {
+            display: block;
+        }
+        
+        li a {
+            text-decoration: none;
+            display: block;
+            padding: 5px;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        li a:hover {
+            color: #fff;
+        }
+        
+        li ul li {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        li ul li a {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Menú de Navegación Desplegable</h1>
+    <ul>
+        <li>
+            <a href="#">Inicio</a>
+        </li>
+        <li>
+            <a href="#">Productos</a>
+            <ul>
+                <li><a href="#">Producto 1</a></li>
+                <li><a href="#">Producto 2</a></li>
+                <li><a href="#">Producto 3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Servicios</a>
+            <ul>
+                <li><a href="#">Servicio 1</a></li>
+                <li><a href="#">Servicio 2</a></li>
+                <li><a href="#">Servicio 3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Acerca de nosotros</a>
+        </li>
+    </ul>
+</body>
+
+</html>
